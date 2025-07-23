@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 400px;
+            min-height: 500px;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            margin: 0;
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
+        .made-by {
+            font-size: 14px;
+            color: #0095f6;
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        .made-by a {
+            color: #0095f6;
+            text-decoration: none;
+        }
+
+        .made-by a:hover {
+            text-decoration: underline;
+            color: #4fc3f7;
+        }
+
+        .status {
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .status.info {
+            background: #263238;
+            color: #80deea;
+            border: 1px solid #4f5b62;
+        }
+
+        .status.success {
+            background: #2e7d32;
+            color: #81c784;
+            border: 1px solid #66bb6a;
+        }
+
+        .status.error {
+            background: #c62828;
+            color: #ff8a80;
+            border: 1px solid #ff5252;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 12px;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: #1e88e5;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1565c0;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: #263238;
+            color: #e0e0e0;
+            border: 1px solid #424242;
+        }
+
+        .btn-secondary:hover {
+            background: #37474f;
+            transform: scale(1.02);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .progress {
+            background: #424242;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #1e88e5;
+            width: 0%;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .results {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+
+        .user-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .user-item:last-child {
+            border-bottom: none;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+            background: #333;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .username {
+            font-weight: 700;
+            font-size: 15px;
+            color: #ffffff;
+        }
+
+        .fullname {
+            font-size: 13px;
+            color: #b0b0b0;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            padding: 14px;
+            background: #263238;
+            border-radius: 12px;
+            border: 1px solid #424242;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-weight: 700;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #b0b0b0;
+        }
+
+        .instructions {
+            background: #263238;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #424242;
+            margin-bottom: 15px;
+        }
+
+        .instructions h4 {
+            margin: 0 0 12px 0;
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .instructions ol {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">Instagram Unfollower Tracker</div>
+        <div class="subtitle">Find who doesn't follow you back</div>
+        <div class="made-by">
+            Made by <a href="https://instagram.com/ge.ethan" target="_blank">@ge.ethan</a>
+        </div>
+    </div>
+    
+    <div id="status" class="status info">
+        Ready to analyze your Instagram account
+    </div>
+    
+    <div class="instructions">
+        <h4>How to use:</h4>
+        <ol>
+            <li>Make sure you're on instagram.com</li>
+            <li>Go to your profile page</li>
+            <li>Click "Scan Account" below</li>
+            <li>Wait for the analysis to complete</li>
+        </ol>
+    </div>
+    
+    <button id="scanBtn" class="btn btn-primary">Scan Account</button>
+    <button id="exportBtn" class="btn btn-secondary" style="display: none;">Export List</button>
+    
+    <div id="progress" class="progress" style="display: none;">
+        <div id="progressBar" class="progress-bar"></div>
+    </div>
+    
+    <div id="stats" class="stats" style="display: none;">
+        <div class="stat">
+            <div id="followingCount" class="stat-number">-</div>
+            <div class="stat-label">Following</div>
+        </div>
+        <div class="stat">
+            <div id="followersCount" class="stat-number">-</div>
+            <div class="stat-label">Followers</div>
+        </div>
+        <div class="stat">
+            <div id="unfollowersCount" class="stat-number">-</div>
+            <div class="stat-label">Don't Follow Back</div>
+        </div>
+    </div>
+    
+    <div id="results" class="results"></div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

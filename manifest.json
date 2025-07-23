@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Instagram Unfollower Tracker",
+    "version": "1.0",
+    "description": "Find people who don't follow you back on Instagram",
+    "permissions": [
+      "activeTab",
+      "storage"
+    ],
+    "host_permissions": [
+      "https://www.instagram.com/*"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["https://www.instagram.com/*"],
+        "js": ["content.js"]
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "Instagram Unfollower Tracker"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": ["injected.js"],
+        "matches": ["https://www.instagram.com/*"]
+      }
+    ]
+  }
