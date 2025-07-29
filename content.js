@@ -112,7 +112,7 @@ async function getUserList(username, type) {
     link.click();
     
     // Wait for modal to open
-    await sleep(3000);
+    await sleep(300);
     
     const modal = document.querySelector('[role="dialog"]');
     if (!modal) {
@@ -182,7 +182,7 @@ async function getUserList(username, type) {
         await scrollModalContent(scrollContainer, modal);
         
         // Wait for content to load
-        await sleep(1500);
+        await sleep(100);
         
         // Update progress
         const progressPercent = type === 'followers' 
@@ -199,7 +199,7 @@ async function getUserList(username, type) {
         if (noNewUsersCount >= 3 && currentUserCount > 0) {
             console.log('Trying aggressive scroll...');
             await performAggressiveScroll(scrollContainer, modal);
-            await sleep(2000);
+            await sleep(200);
         }
     }
     
@@ -221,7 +221,7 @@ async function getUserList(username, type) {
         closeButton.dispatchEvent(clickEvent);
     }
     
-    await sleep(1000);
+    await sleep(150);
     
     return Array.from(users);
 }
@@ -272,14 +272,14 @@ async function scrollModalContent(scrollContainer, modal) {
         behavior: 'smooth'
     });
     
-    await sleep(500);
+    await sleep(30);
     
     // Method 2: Incremental scrolling
     const currentScroll = scrollContainer.scrollTop;
     const scrollIncrement = scrollContainer.clientHeight * 0.8;
     scrollContainer.scrollTop = currentScroll + scrollIncrement;
     
-    await sleep(300);
+    await sleep(50);
     
     // Method 3: Dispatch wheel events to trigger Instagram's lazy loading
     const wheelEvents = [
@@ -293,7 +293,7 @@ async function scrollModalContent(scrollContainer, modal) {
         modal.dispatchEvent(event);
     });
     
-    await sleep(200);
+    await sleep(100);
     
     // Method 4: Direct scroll manipulation
     if (scrollContainer.scrollTop < maxScrollTop * 0.9) {
@@ -363,7 +363,7 @@ async function performAdvancedScroll(scrollContainer, modal) {
     for (let i = 0; i < strategies.length; i++) {
         try {
             strategies[i]();
-            await sleep(300); // Small delay between strategies
+            await sleep(100); // Small delay between strategies
         } catch (error) {
             console.warn(`Scroll strategy ${i + 1} failed:`, error);
         }
@@ -436,7 +436,7 @@ async function performAggressiveScroll(scrollContainer, modal) {
     for (let i = 0; i < techniques.length; i++) {
         try {
             techniques[i]();
-            await sleep(400);
+            await sleep(150);
             console.log(`Aggressive technique ${i + 1} completed. Scroll position:`, scrollContainer.scrollTop);
         } catch (error) {
             console.warn(`Aggressive scroll technique ${i + 1} failed:`, error);
